@@ -26,7 +26,6 @@ const lyrics = [
     { time: 154.76, text: "🦋 So let me fly with you ✈️" },
     { time: 158.14, text: "♾️ Will you be forever with me 💑" },
 ];
-
 // ========================================
 // AUDIO CONTROL AND LYRICS SYNCHRONIZATION
 // ========================================
