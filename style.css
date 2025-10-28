@@ -1,3 +1,18 @@
+/* ========================================
+   FONT IMPORT
+   ========================================
+   Place your geraldine.ttf font file in the same folder as this CSS file
+*/
+@font-face {
+    font-family: 'Geraldine';
+    src: url('geraldine.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* ========================================
+   GLOBAL STYLES
+   ======================================== */
 * {
     margin: 0;
     padding: 0;
@@ -5,37 +20,40 @@
 }
 
 body {
-    font-family: 'Georgia', serif;
-    overflow-x: hidden;
-    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #7e22ce 100%);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     min-height: 100vh;
-    color: white;
+    overflow-x: hidden;
+    position: relative;
 }
 
+/* ========================================
+   OCEAN BACKGROUND
+   ======================================== */
 .ocean-bg {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 0;
-    opacity: 0.3;
+    background: linear-gradient(to bottom, #001f3f 0%, #003d5c 50%, #0a5f7f 100%);
+    z-index: -2;
 }
 
 .wave {
     position: absolute;
     bottom: 0;
-    left: 0;
     width: 200%;
     height: 150px;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"><path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="%23ffffff"></path></svg>') repeat-x;
-    animation: wave 15s linear infinite;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"><path d="M0,64L48,69.3C96,75,192,85,288,80C384,75,480,53,576,48C672,43,768,53,864,64C960,75,1056,85,1152,80L1200,75L1200,120L1152,120C1056,120,960,120,864,120C768,120,672,120,576,120C480,120,384,120,288,120C192,120,96,120,48,120L0,120Z" fill="%23ffffff" fill-opacity="0.1"/></svg>');
+    background-size: 50% 100%;
+    animation: wave 20s linear infinite;
 }
 
 .wave:nth-child(2) {
-    bottom: 15px;
+    bottom: 10px;
     opacity: 0.5;
-    animation: wave 20s linear infinite reverse;
+    animation: wave 15s linear infinite reverse;
 }
 
 @keyframes wave {
@@ -43,178 +61,17 @@ body {
     100% { transform: translateX(-50%); }
 }
 
-.container {
-    position: relative;
-    z-index: 1;
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 20px;
-    text-align: center;
-    min-height: calc(100vh - 250px);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.header {
-    margin-bottom: 20px;
-    animation: fadeInDown 1.5s ease;
-}
-
-.header h1 {
-    font-size: 2.5em;
-    font-weight: 300;
-    letter-spacing: 6px;
-    text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
-    margin-bottom: 8px;
-}
-
-.subtitle {
-    font-size: 1.1em;
-    font-style: italic;
-    opacity: 0.9;
-    letter-spacing: 2px;
-}
-
-.lyrics-container {
-    position: relative;
-    height: 80px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.lyric-line {
-    position: absolute;
-    font-size: 1.6em;
-    line-height: 1.6;
-    opacity: 0;
-    transform: translateY(20px);
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-    transition: opacity 1s ease, transform 1s ease;
-    width: 100%;
-    text-align: center;
-}
-
-.lyric-line.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.lyric-line.hide {
-    opacity: 0;
-    transform: translateY(-20px);
-}
-
-.message {
-    position: fixed;
-    bottom: 80px;
-    left: 0;
-    right: 0;
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 15px;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    opacity: 1;
-    text-align: center;
-    z-index: 2;
-}
-
-.message h2 {
-    font-size: 1em;
-    margin-bottom: 5px;
-    font-weight: 200;
-    letter-spacing: 2px;
-}
-
-.message p {
-    font-size: 1.1em;
-    line-height: 1.6;
-    font-style: italic;
-    margin: 10px 0;
-}
-
-.signature {
-    margin-top: 10px;
-    font-size: 1.6em;
-    font-family: 'Brush Script MT', cursive;
-    letter-spacing: 3px;
-}
-
-.butterfly {
-    position: fixed;
-    font-size: 25px;
-    pointer-events: none;
-    z-index: 3;
-    opacity: 0.8;
-    filter: drop-shadow(0 0 10px rgba(147, 197, 253, 0.8));
-    will-change: transform;
-}
-
-.heart {
-    position: fixed;
-    font-size: 30px;
-    pointer-events: none;
-    z-index: 3;
-    opacity: 0;
-    color: #ff6b9d;
-}
-
-@keyframes float {
-    0% { transform: translate(0, 0) rotate(0deg); }
-    20% { transform: translate(150px, -100px) rotate(10deg); }
-    40% { transform: translate(100px, 150px) rotate(-15deg); }
-    60% { transform: translate(-150px, 100px) rotate(5deg); }
-    80% { transform: translate(-100px, -150px) rotate(-10deg); }
-    100% { transform: translate(0, 0) rotate(0deg); }
-}
-
-@keyframes heartFloat {
-    0% {
-        transform: translateY(100vh) rotate(0deg);
-        opacity: 0;
-    }
-    10% {
-        opacity: 1;
-    }
-    90% {
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(-100vh) rotate(360deg);
-        opacity: 0;
-    }
-}
-
-@keyframes fadeInDown {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes fadeIn {
-    to { opacity: 1; }
-}
-
-.pulse {
-    animation: pulse 2s ease-in-out infinite;
-}
-
-@keyframes pulse {
-    0%, 100% { transform: scale(1); opacity: 0.7; }
-    50% { transform: scale(1.1); opacity: 1; }
-}
-
+/* ========================================
+   STARS
+   ======================================== */
 .stars {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    pointer-events: none;
     z-index: 0;
+    pointer-events: none;
 }
 
 .star {
@@ -225,47 +82,61 @@ body {
 }
 
 @keyframes twinkle {
-    0%, 100% { opacity: 0.3; transform: scale(1); }
-    50% { opacity: 1; transform: scale(1.2); }
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
 }
 
-.play-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 60px;
-    height: 60px;
-    background: rgba(255, 255, 255, 0.2);
-    border: 2px solid rgba(255, 255, 255, 0.5);
-    border-radius: 50%;
+/* ========================================
+   MAIN CONTAINER
+   ======================================== */
+.container {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+/* ========================================
+   HEADER
+   ======================================== */
+.header {
+    text-align: center;
+    margin-bottom: 3rem;
+    animation: fadeIn 2s ease-in;
+}
+
+.header h1 {
+    font-size: 4rem;
+    color: white;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ========================================
+   LYRICS DISPLAY (with Geraldine font)
+   ======================================== */
+.lyrics-container {
+    position: relative;
+    min-height: 200px;
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
-    backdrop-filter: blur(10px);
-    transition: all 0.3s ease;
-    z-index: 100;
-}
-
-.play-button:hover {
-    background: rgba(255, 255, 255, 0.3);
-    transform: scale(1.1);
-}
-
-.play-button::before {
-    content: '▶';
-    font-size: 20px;
-    margin-left: 4px;
-}
-
-.play-button.playing::before {
-    content: '⏸';
-    margin-left: 0;
-}
-
-@font-face {
-    font-family: 'Geraldine';
-    src: url('GERALDINE\ PERSONAL\ USE.ttf') format('truetype');
+    width: 100%;
+    max-width: 800px;
 }
 
 #currentLyric {
@@ -273,13 +144,15 @@ body {
     transition: opacity 1s ease, transform 1s ease;
     transform: translateY(20px);
     font-family: 'Geraldine', cursive, sans-serif;
-    font-size: 1.6em;
+    font-size: 2em;
     line-height: 1.6;
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     width: 100%;
     text-align: center;
     position: absolute;
+    color: white;
 }
+
 #currentLyric.show {
     opacity: 1;
     transform: translateY(0);
@@ -288,4 +161,311 @@ body {
 #currentLyric.hide {
     opacity: 0;
     transform: translateY(-20px);
+}
+
+/* ========================================
+   MESSAGE BOX
+   ======================================== */
+.message {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 600px;
+    color: white;
+    z-index: 2;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.message h2 {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+}
+
+.message p {
+    margin-bottom: 1rem;
+    line-height: 1.8;
+}
+
+.signature {
+    margin-top: 1.5rem;
+    font-style: italic;
+    font-size: 1.2rem;
+}
+
+/* ========================================
+   PLAY BUTTON
+   ======================================== */
+.play-button {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 70px;
+    height: 70px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.play-button:hover {
+    transform: scale(1.1);
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.play-button::before {
+    content: '';
+    width: 0;
+    height: 0;
+    border-left: 20px solid white;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    margin-left: 5px;
+}
+
+.play-button.playing::before {
+    border: none;
+    width: 6px;
+    height: 24px;
+    background: white;
+    margin: 0;
+    box-shadow: 12px 0 0 white;
+}
+
+/* ========================================
+   FLOATING ANIMATIONS
+   ======================================== */
+.butterfly {
+    position: fixed;
+    font-size: 30px;
+    z-index: 1;
+    pointer-events: none;
+    transition: transform 0.3s ease;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    25% {
+        transform: translate(100px, -100px) rotate(10deg);
+    }
+    50% {
+        transform: translate(200px, 50px) rotate(-5deg);
+    }
+    75% {
+        transform: translate(50px, 150px) rotate(15deg);
+    }
+}
+
+.heart {
+    position: fixed;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+@keyframes heartFloat {
+    0% {
+        bottom: -50px;
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.8;
+    }
+    90% {
+        opacity: 0.8;
+    }
+    100% {
+        bottom: 110vh;
+        opacity: 0;
+    }
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+
+    .header h1 {
+        font-size: 2rem;
+        letter-spacing: 3px;
+    }
+    
+    .subtitle {
+        font-size: 0.9em;
+        letter-spacing: 1px;
+    }
+
+    .container {
+        padding: 15px;
+        min-height: calc(100vh - 350px);
+    }
+    
+    .lyrics-container {
+        height: 120px;
+        padding: 0 10px;
+    }
+
+    #currentLyric {
+        font-size: 1.3em;
+        line-height: 1.5;
+        padding: 0 10px;
+    }
+    
+    .message {
+        padding: 15px;
+        max-width: calc(100% - 20px);
+        bottom: 90px;
+        left: 10px;
+        right: 10px;
+        margin: 0;
+        border-radius: 12px;
+    }
+
+    .message h2 {
+        font-size: 1.2em;
+        margin-bottom: 8px;
+    }
+
+    .message p {
+        font-size: 0.95em;
+        line-height: 1.5;
+        margin: 8px 0;
+    }
+
+    .signature {
+        font-size: 1.3em;
+        margin-top: 8px;
+    }
+    
+    .play-button {
+        width: 55px;
+        height: 55px;
+        bottom: 15px;
+        right: 15px;
+    }
+
+    .play-button::before {
+        font-size: 18px;
+    }
+
+    .butterfly {
+        font-size: 20px;
+    }
+
+    .heart {
+        font-size: 22px;
+    }
+
+    .wave {
+        height: 100px;
+    }
+
+    .wave:nth-child(2) {
+        bottom: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header h1 {
+        font-size: 1.6rem;
+        letter-spacing: 2px;
+    }
+    
+    .subtitle {
+        font-size: 0.85em;
+    }
+
+    .container {
+        padding: 10px;
+    }
+
+    .lyrics-container {
+        height: 140px;
+    }
+
+    #currentLyric {
+        font-size: 1.1em;
+        line-height: 1.4;
+    }
+    
+    .message {
+        padding: 12px;
+        bottom: 80px;
+        border-radius: 10px;
+    }
+
+    .message h2 {
+        font-size: 1.1em;
+    }
+
+    .message p {
+        font-size: 0.85em;
+        line-height: 1.4;
+    }
+
+    .signature {
+        font-size: 1.1em;
+    }
+    
+    .play-button {
+        width: 50px;
+        height: 50px;
+        bottom: 12px;
+        right: 12px;
+    }
+
+    .play-button::before {
+        font-size: 16px;
+    }
+
+    .butterfly {
+        font-size: 18px;
+    }
+
+    .heart {
+        font-size: 20px;
+    }
+}
+
+/* Landscape orientation on mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+    .container {
+        min-height: calc(100vh - 200px);
+    }
+
+    .message {
+        bottom: 10px;
+        padding: 10px;
+        max-height: 30vh;
+        overflow-y: auto;
+    }
+
+    .message p {
+        font-size: 0.8em;
+        margin: 5px 0;
+    }
+
+    .lyrics-container {
+        height: 100px;
+    }
+
+    #currentLyric {
+        font-size: 1em;
+    }
 }
